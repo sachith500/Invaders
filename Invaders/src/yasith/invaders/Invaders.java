@@ -8,8 +8,13 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.utils.Logger;
 
+/**
+ * Starts the invaders game, and handles updating the game loop, and display.
+ * 
+ * @author Yasith Vidanaarachchi
+ *
+ */
 public class Invaders implements ApplicationListener {
 	
 	private TextureAtlas atlas;
@@ -68,6 +73,11 @@ public class Invaders implements ApplicationListener {
 	public void resume() {
 	}
 	
+	/** Updates position of the ship
+	 * 	
+	 * 	On Android, uses the accelerometer to detect movement,
+	 * 	on PC uses arrow keys.
+	 */
 	private void updatePositions(){
 			
 		if(Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer)){
@@ -81,18 +91,25 @@ public class Invaders implements ApplicationListener {
 		}
 		
 		float end = Gdx.graphics.getWidth() - ship.getWidth();
+		
+		// Stop the ship on screen edges
 		shipX = shipX < 0 ? 0 : shipX;
 		shipX = shipX > end ? end : shipX; 
 		
 		ship.setPosition(shipX, shipY);
 		
 	}
-	
+
+	/** Draws the UI of the game
+	 * 	- Lives: top-left corner of the screen
+	 */
 	private void drawUI(){
 		// Draw one heart for each life on the top-left corner
+		// spaced with 5px, starts with 5px offset from left
 		for (int i = 0; i < lives; i++) {
-			heart.setPosition(i * (heart.getWidth() + 5.0f) + 5.0f, Gdx.graphics.getHeight() - heart.getHeight());
-			heart.draw(batch, 0.9f);
+			heart.setPosition(i * (heart.getWidth() + 5.0f) + 5.0f, 
+					Gdx.graphics.getHeight() - heart.getHeight());
+			heart.draw(batch, 0.9f); // draw heart with 90% opacity
 		}
 	}
 }
