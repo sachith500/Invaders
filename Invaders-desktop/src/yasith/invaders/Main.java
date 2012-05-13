@@ -18,7 +18,7 @@ public class Main {
 		cfg.width = 640;
 		cfg.height = 480;
 		
-		new LwjglApplication(new Invaders(), cfg);
+		new LwjglApplication(new Game(), cfg);
 	}
 	
 	static void packTextures(){
@@ -28,7 +28,9 @@ public class Main {
 		settings.maxHeight = 512;
 		settings.incremental = true;
 		
-		TexturePacker.process(settings, "../images", "../Invaders-android/assets/images");
-		TexturePacker.process(settings, "../images/", "../Invaders-desktop/images");
+		TexturePacker.process(settings, 
+				"../images", "../Invaders-android/assets/images");
+		TexturePacker.process(settings, 
+				"../images/", "../Invaders-desktop/images");
 	}
 }
