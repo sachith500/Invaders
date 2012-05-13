@@ -20,7 +20,7 @@ ship0
 heart
   rotate: false
   xy: 94, 2
-  size: 24, 22
-  orig: 24, 22
+  size: 25, 25
+  orig: 25, 25
   offset: 0, 0
   index: -1
