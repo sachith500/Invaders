@@ -1,5 +1,7 @@
 package yasith.invaders;
 
+import java.util.*;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -20,6 +22,7 @@ public class Game implements ApplicationListener {
 	private SpriteBatch mBatch; // Use the sprite batch to draw the Sprites.
 
 	private Ship mShip;
+	private ArrayList<Invader> mInvaders; // Holds the invaders
 	private Hud mHud;
 	
 	@Override
@@ -27,13 +30,31 @@ public class Game implements ApplicationListener {
 		
 		mShip = new Ship();
 		mShip.setPosition( Gdx.graphics.getWidth() * 0.5f, 50.0f);
+	
+		// Adding invaders to the list of invaders
+		mInvaders = new ArrayList<Invader>();
+	
+		float startX = GameConstants.START_X;
+		float startY = Gdx.graphics.getHeight() - GameConstants.START_Y;
+		
+		float offsetX = GameConstants.OFFSET_X;
+		float offsetY = GameConstants.OFFSET_Y;
+		
+		for(int i = 0; i < GameConstants.INVADER_ROWS; ++i){
+			for(int j = 0; j < GameConstants.INVADER_COLS; ++j){
+				Invader invader = new Invader(startX + (j * offsetX),
+						startY - (i * offsetY), i/2);
+				
+				mInvaders.add(invader);
+			}
+		}
 		
 		mHud = new Hud();
 		
 		mBatch = new SpriteBatch();
 		
 		gameState = GameState.getInstance();
-		gameState.setLives(3);
+		gameState.setLives(GameConstants.PLAYER_LIVES);
 	}
 
 	@Override
@@ -45,12 +66,23 @@ public class Game implements ApplicationListener {
 		this.mDelta = Gdx.graphics.getDeltaTime();
 		this.updatePositions();
 	
+		if(mInvaders.size() == 0){
+			// TODO: Add logic for end game
+		}
+		
+		// Clear the screen to black
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		mBatch.begin();
-			mHud.render(mBatch);
 			mShip.render(mBatch);
+			
+			// Draw the remaining invaders
+			for(Invader invader: mInvaders){
+				invader.render(mBatch);
+			}
+			
+			mHud.render(mBatch);
 		mBatch.end();
 	}
 
@@ -66,7 +98,8 @@ public class Game implements ApplicationListener {
 	public void resume() {
 	}
 	
-	/** Updates position of the ship
+	/** 
+	 * 	Updates position of the ship
 	 * 	
 	 * 	On Android, uses the accelerometer to detect movement,
 	 * 	on PC uses arrow keys.
@@ -74,9 +107,11 @@ public class Game implements ApplicationListener {
 	private void updatePositions(){
 			
 		float dx = 0.0f;
+		
+		// If the Accelerometer is available use that
 		if(Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer)){
 			dx = Gdx.input.getAccelerometerY() * mDelta;
-		} else {
+		} else { // else assume we are on the computer
 			if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
 				dx = mDelta;
 			} else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
