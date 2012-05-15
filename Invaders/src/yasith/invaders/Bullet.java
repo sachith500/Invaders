@@ -2,6 +2,7 @@ package yasith.invaders;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * Represents a bullet
@@ -68,5 +69,13 @@ public class Bullet {
 	 */
 	public void hit(){
 		// TODO: Show a particle and play a sound
+	}
+
+	/*
+	 * Renders the bullet sprite on the given SpriteBatch
+	 */
+	public void render(SpriteBatch batch) {
+		mSprite.setPosition(mX, mY);
+		mSprite.draw(batch);
 	}
 }
