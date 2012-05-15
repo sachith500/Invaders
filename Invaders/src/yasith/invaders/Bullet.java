@@ -17,7 +17,8 @@ public class Bullet {
 	// using libgdx coordinate system (bottom-left = (0,0)) 
 	private int mDir;
 	
-	private boolean isHit = false;
+	private boolean mIsHit = false;
+	private boolean mOnScreen = true;
 	
 	private Sprite mSprite;
 
@@ -62,6 +63,8 @@ public class Bullet {
 	public void move(){
 		// TODO: Should deltaTime be in GameState ?
 		mY += mVelocity * Gdx.graphics.getDeltaTime() * (float) mDir;
+		
+		if(mY > Gdx.graphics.getHeight() || mY < 0) mOnScreen = false;
 	}
 
 	/*
@@ -77,5 +80,13 @@ public class Bullet {
 	public void render(SpriteBatch batch) {
 		mSprite.setPosition(mX, mY);
 		mSprite.draw(batch);
+	}
+	
+	/*
+	 * Returns true if the bullet is still alive
+	 * (On screen and haven't hit anything)
+	 */
+	public boolean isAlive(){
+		return (mOnScreen && (!mIsHit));
 	}
 }

@@ -24,7 +24,6 @@ public class Game implements ApplicationListener {
 	private Hud mHud;
 	private Ship mShip;
 	private ArrayList<Invader> mInvaders; // Holds the invaders
-	private ArrayList<Bullet> mBullets; // Holds the bullets
 	
 	@Override
 	public void create() {
@@ -54,7 +53,6 @@ public class Game implements ApplicationListener {
 		mHud = new Hud();
 		mBatch = new SpriteBatch();
 		
-		mBullets = new ArrayList<Bullet>();
 		
 		gameState = GameState.getInstance();
 		gameState.setLives(GameConstants.PLAYER_LIVES);
@@ -82,9 +80,6 @@ public class Game implements ApplicationListener {
 			
 			// Draw the remaining invaders
 			for(Invader invader: mInvaders) invader.render(mBatch);
-			
-			// Draw the bullets
-			for(Bullet b: mBullets) b.render(mBatch);
 			
 			mHud.render(mBatch);
 		mBatch.end();
@@ -122,18 +117,12 @@ public class Game implements ApplicationListener {
 				dx = -mDelta;
 			}
 		}
-	
-		// TODO: Let the ship manage its' bullets
-		if(Gdx.input.justTouched()){
-			Bullet b = new Bullet(mShip.x(), mShip.y(), 1);
-			mBullets.add(b);
-		}
 		
 		mShip.move(dx);
-		
-		// Update the positions of the bullets
-		for(Bullet b: mBullets) b.move();
-		
-		//Gdx.app.log("INVADERS", "Bullets: " + mBullets.size());
+	
+		// Fire a bullet when the user taps the screen
+		if(Gdx.input.justTouched()){
+			mShip.fire();
+		}
 	}
 }

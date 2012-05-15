@@ -26,6 +26,7 @@ public class Invader {
 		
 		gameState = GameState.getInstance();
 		TextureAtlas atlas = gameState.atlas;
+		// TODO: Cache the sprites
 		mSprite = atlas.createSprite(GameConstants.INVADER_SPRITES[row]);
 	}
 	
