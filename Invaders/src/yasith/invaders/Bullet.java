@@ -13,7 +13,7 @@ public class Bullet {
 	private float mY;
 	private float mVelocity = 200.0f; // px per second
 	
-	// -1 for up, 1 for down. This makes it easier to move the bullets
+	// 1 for up, -1 for down. This makes it easier to move the bullets
 	// using libgdx coordinate system (bottom-left = (0,0)) 
 	private int mDir;
 	
@@ -26,7 +26,7 @@ public class Bullet {
 	/**
 	 * Creates a new instance of a bullet
 	 * 
-	 * @param dir the direction of the bullet (-1 for up, 1 for down)
+	 * @param dir the direction of the bullet (1 for up, -1 for down)
 	 */
 	public Bullet(float x, float y, int dir){
 		gameState = GameState.getInstance();
@@ -35,7 +35,7 @@ public class Bullet {
 		mSprite = gameState.atlas.createSprite("bullet");
 		
 		// If the bullet is going down, we need to turn it around
-		if(dir == 1) mSprite.setScale(0.0f, -1.0f);
+		if(dir == -1) mSprite.setScale(1.0f, -1.0f);
 		
 		mDir = dir;
 		mX = x;

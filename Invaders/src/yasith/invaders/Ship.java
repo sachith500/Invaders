@@ -52,4 +52,18 @@ public class Ship {
 		mX = mX > maxX ? maxX : mX; // Stop at the right edge
 		mX = mX < 0 ? 0 : mX; // Stop at the left edge
 	}
+	
+	/**
+	 * Return the x coordinate of the ship
+	 */
+	public float x() { 
+		return mX;
+	}
+	
+	/**
+	 * Return the y coordinate of the ship
+	 */
+	public float y() {
+		return mY;
+	}
 }
