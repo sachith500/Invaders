@@ -11,15 +11,17 @@ public abstract class AbstractScreen implements Screen{
 	public static final int GAME_WIDTH = 800;
 	public static final int GAME_HEIGHT = 480;
 	
-	private final Stage mStage;
-	private final Game mGame;
+	protected final Stage mStage;
+	protected final GameState mGameState;
 	
 	private SpriteBatch mBatch;
 	
-	public AbstractScreen(Game game){
-		this.mGame = game;
+	public AbstractScreen(){
 		// Stretch the graphics to match the resolution to screen size
-		this.mStage = new Stage(GAME_WIDTH, GAME_HEIGHT, true);
+		mStage = new Stage(GAME_WIDTH, GAME_HEIGHT, true);
+		
+		// Set the GameState
+		mGameState = GameState.getInstance();
 	}
 	
 	public SpriteBatch getSpriteBatch(){
