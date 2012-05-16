@@ -105,24 +105,6 @@ public class Game implements ApplicationListener {
 	 */
 	private void updatePositions(){
 			
-		float dx = 0.0f;
-		
-		// If the Accelerometer is available use that
-		if(Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer)){
-			dx = Gdx.input.getAccelerometerY() * mDelta;
-		} else { // else assume we are on the computer
-			if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-				dx = mDelta;
-			} else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-				dx = -mDelta;
-			}
-		}
-		
-		mShip.move(dx);
-	
-		// Fire a bullet when the user taps the screen
-		if(Gdx.input.justTouched()){
-			mShip.fire();
-		}
+		// TODO: Remove during refactoring
 	}
 }

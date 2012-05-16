@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 /**
  * An Actor created with a Sprite
  */
-public class DynamicActor extends Actor {
+public abstract class DynamicActor extends Actor {
 	
 	protected Sprite mSprite;
 	protected float mVelocity;
@@ -34,4 +34,7 @@ public class DynamicActor extends Actor {
 		// We don't need touch detection for our Actors yet
 		return null;
 	}
+	
+	@Override
+	public abstract void act(float delta);
 }

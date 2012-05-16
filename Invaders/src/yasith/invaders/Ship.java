@@ -3,30 +3,22 @@ package yasith.invaders;
 import java.util.*;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Peripheral;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * Represents the ship the player controls
  */
-public class Ship {
+public class Ship extends DynamicActor{
 
-	private float mX = 0.0f;
-	private float mY = 0.0f;
-	private float mVelocity = 50.0f; // px per second
-	
-	private Sprite mSprite = null;
 	private ArrayList<Bullet> mBullets; // Holds the bullets
-	
-	GameState gameState;
 
 	/**
 	 * Creates new instance of a ship
 	 */
 	public Ship(){
-		gameState = GameState.getInstance();
-		
-		mSprite = gameState.atlas.createSprite("ship0");
+		super(GameState.getInstance().atlas.createSprite("ship0"));
 		
 		mBullets = new ArrayList<Bullet>();
 	}
@@ -34,22 +26,10 @@ public class Ship {
 	/**
 	 * Renders the ship sprite on the given SpriteBatch
 	 */
-	public void render(SpriteBatch batch){
-		mSprite.setPosition(mX, mY);
-		mSprite.draw(batch);
-		
-		// Update the Bullets, and draw them.
-		Iterator<Bullet> it = mBullets.iterator();
-		while(it.hasNext()){
-			Bullet b = it.next();
-			b.move();
-			b.render(batch);
-			
-			// If the bullet is dead remove
-			// Using iterator's remove is the only removal with
-			// specified behavior
-			if(!b.isAlive()) it.remove();
-		}
+	@Override
+	public void draw(SpriteBatch batch, float parentAlpha){
+		super.draw(batch, parentAlpha);
+	
 		
 	}
 
@@ -57,33 +37,33 @@ public class Ship {
 	 * Sets the position of the ship
 	 */
 	public void setPosition(float x, float y){
-		mX = x;
-		mY = y;
+		this.x = x;
+		this.y = y;
 	}
 	
 	/**
 	 * Moves the ship by x * velocity. No need to change y coord.
 	 */
 	public void move(float x){
-		mX += x * mVelocity;
+		x += x * mVelocity;
 	
 		float maxX = Gdx.graphics.getWidth() - mSprite.getWidth();
-		mX = mX > maxX ? maxX : mX; // Stop at the right edge
-		mX = mX < 0 ? 0 : mX; // Stop at the left edge
+		x = x > maxX ? maxX : x; // Stop at the right edge
+		x = x < 0 ? 0 : x; // Stop at the left edge
 	}
 	
 	/**
 	 * Return the x coordinate of the ship
 	 */
 	public float x() { 
-		return mX;
+		return x;
 	}
 	
 	/**
 	 * Return the y coordinate of the ship
 	 */
 	public float y() {
-		return mY;
+		return y;
 	}
 	
 	/**
@@ -95,7 +75,48 @@ public class Ship {
 		// TODO: Should go into GameConstants
 		if(mBullets.size() < 2){
 			// Bullet should fire from the middle of the ship
-			mBullets.add(new Bullet(mX + mSprite.getWidth() * 0.5f, mY, 1));
+			mBullets.add(new Bullet(x + mSprite.getWidth() * 0.5f, y, 1));
 		}
+	}
+	
+	@Override
+	public void act(float delta){
+		
+		// Update the position of the ship
+		
+		float dx = 0.0f;
+		// If the Accelerometer is available use that
+		if(Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer)){
+			dx = Gdx.input.getAccelerometerY() * delta;
+		} else { // else assume we are on the computer
+			if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+				dx = delta;
+			} else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+				dx = -delta;
+			}
+		}
+		
+		move(dx);
+		// End of Updating the position of the ship
+	
+		// Fire a bullet when the user taps the screen
+		if(Gdx.input.justTouched()){
+			fire();
+		}
+		
+		// Update the Bullets, and draw them.
+		Iterator<Bullet> it = mBullets.iterator();
+		while(it.hasNext()){
+			Bullet b = it.next();
+			b.move();
+			//TODO: make the bullet an actor too
+			//b.render(batch);
+			
+			// If the bullet is dead remove
+			// Using iterator's remove is the only removal with
+			// specified behavior
+			if(!b.isAlive()) it.remove();
+		}
+		
 	}
 }
