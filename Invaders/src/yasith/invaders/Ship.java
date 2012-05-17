@@ -5,7 +5,8 @@ import java.util.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Peripheral;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import static yasith.invaders.GameConstants.*;
 
 /**
  * Represents the ship the player controls
@@ -21,15 +22,7 @@ public class Ship extends DynamicActor{
 		super(GameState.getInstance().atlas.createSprite("ship0"));
 		
 		mBullets = new ArrayList<Bullet>();
-		mVelocity = 200.0f;
-	}
-
-	/**
-	 * Renders the ship sprite on the given SpriteBatch
-	 */
-	@Override
-	public void draw(SpriteBatch batch, float parentAlpha){
-		super.draw(batch, parentAlpha);
+		mVelocity = SHIP_VELOCITY;
 	}
 
 	/**
@@ -52,27 +45,13 @@ public class Ship extends DynamicActor{
 	}
 	
 	/**
-	 * Return the x coordinate of the ship
-	 */
-	public float x() { 
-		return x;
-	}
-	
-	/**
-	 * Return the y coordinate of the ship
-	 */
-	public float y() {
-		return y;
-	}
-	
-	/**
 	 * Fires a bullet up, only 2 bullets allowed at any given time
 	 */
 	public void fire(){
 		// Limit the total number of bullets that can be fired,
 		// at any given time.
 		// TODO: Should go into GameConstants
-		if(mBullets.size() < 2){
+		if(mBullets.size() < BULLET_LIMIT){
 			// Bullet should fire from the middle of the ship
 			Bullet b = new Bullet(x + mSprite.getWidth() * 0.5f, y, 1);
 			mBullets.add(b);
@@ -80,11 +59,13 @@ public class Ship extends DynamicActor{
 		}
 	}
 	
+	/**
+	 * Updates the ship, and invokes related actions
+	 */
 	@Override
 	public void act(float delta){
 		
 		// Update the position of the ship
-		
 		float dx = 0.0f;
 		// If the Accelerometer is available use that
 		if(Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer)){

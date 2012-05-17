@@ -26,4 +26,11 @@ public class GameConstants {
 	
 	// Tag for Logging
 	public static final String LOG_TAG = "Invaders";
+	
+	// Bullet's properties
+	public static final float BULLET_VELOCITY = 200.0f;
+	public static final int BULLET_LIMIT = 2;
+	
+	// Ship's properties
+	public static final float SHIP_VELOCITY = 200.0f;
 }

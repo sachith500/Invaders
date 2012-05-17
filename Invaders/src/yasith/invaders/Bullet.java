@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import static yasith.invaders.GameConstants.*;
+
 /**
  * Represents a bullet
  */
@@ -32,21 +34,8 @@ public class Bullet extends DynamicActor{
 		this.x = x;
 		this.y = y;
 		
-		mVelocity = 200.0f;
-	}
-	
-	/**
-	 * Return x coordinate of the bullet
-	 */
-	public float x(){
-		return x;
-	}
-	
-	/**
-	 * Return y coordinate of the bullet
-	 */
-	public float y(){
-		return y;
+		// Set the bullet's velocity
+		mVelocity = BULLET_VELOCITY;
 	}
 	
 	/**
@@ -54,24 +43,13 @@ public class Bullet extends DynamicActor{
 	 */
 	public void move(float delta){
 		// TODO: Should deltaTime be in GameState ?
-		y += mVelocity * (float) mDir * delta;
-		
-		if(y > Gdx.graphics.getHeight() || y < 0) mOnScreen = false;
-	}
+		}
 
 	/*
 	 * Callback function when the bullet is hit.
 	 */
 	public void hit(){
 		// TODO: Show a particle and play a sound
-	}
-
-	/*
-	 * Renders the bullet sprite on the given SpriteBatch
-	 */
-	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
-		super.draw(batch, parentAlpha);
 	}
 	
 	/*
@@ -84,6 +62,9 @@ public class Bullet extends DynamicActor{
 
 	@Override
 	public void act(float delta) {
-		move(delta);
+		// Move the bullet, and update mOnScreen if the bullet
+		// goes off the screen
+		y += mVelocity * (float) mDir * delta;
+		if(y > Gdx.graphics.getHeight() || y < 0) mOnScreen = false;
 	}
 }

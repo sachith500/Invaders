@@ -26,12 +26,6 @@ public abstract class AbstractScreen implements Screen{
 		mGameState = GameState.getInstance();
 	}
 	
-	public SpriteBatch getSpriteBatch(){
-		return this.mBatch;
-	}
-	
-	// Screen Implementation
-	
 	@Override
 	public void show(){
 		Gdx.input.setInputProcessor(mStage);

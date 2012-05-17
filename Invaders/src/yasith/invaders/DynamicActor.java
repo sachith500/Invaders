@@ -19,6 +19,9 @@ public abstract class DynamicActor extends Actor {
 		mSprite = sprite;
 	}
 	
+	/**
+	 * Sets the position of the sprite, and draws
+	 */
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		// Prepare the sprite before drawing
@@ -35,6 +38,10 @@ public abstract class DynamicActor extends Actor {
 		return null;
 	}
 	
+	/**
+	 * Gets called before draw, should update the states
+	 * of the Actor here
+	 */
 	@Override
 	public abstract void act(float delta);
 }

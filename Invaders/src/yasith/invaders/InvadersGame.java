@@ -22,23 +22,15 @@ public class InvadersGame extends Game{
 	
 	GameState gameState;
 	
-	private float mDelta; // The time since the last frame was drawn
-	private SpriteBatch mBatch; // Use the sprite batch to draw the Sprites.
-
-	private Hud mHud;
-	private Ship mShip;
-	private ArrayList<Invader> mInvaders; // Holds the invaders
+	//private Hud mHud;
+	//private ArrayList<Invader> mInvaders; // Holds the invaders
 	
 	@Override
 	public void create() {
 		
 		setScreen(new GameScreen());
-		
-		/*
-		
-		mShip = new Ship();
-		mShip.setPosition( Gdx.graphics.getWidth() * 0.5f, 50.0f);
 	
+		/*
 		// Adding invaders to the list of invaders
 		mInvaders = new ArrayList<Invader>();
 		

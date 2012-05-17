@@ -17,16 +17,16 @@ public class GameScreen extends AbstractScreen {
 	public GameScreen() {
 		super();
 		
+		// Add the player's ship to the GameScreen
 		mShip = new Ship();
 	}
 
 	@Override
 	public void show(){
-		// Calls the draw functions of its' Actors
 		super.show();
 		
-		Gdx.app.log(LOG_TAG, "Showing GameScreen");
-		
+		// Add the ship to the stage's actor list
+		// It's act-draw functions would get called repeatedly
 		mShip.setPosition(100.0f, 100.0f);
 		mStage.addActor(mShip);
 		
