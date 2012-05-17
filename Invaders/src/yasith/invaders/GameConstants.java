@@ -23,4 +23,7 @@ public class GameConstants {
 	
 	// Number of lives the player begins with
 	public static final int PLAYER_LIVES = 3;
+	
+	// Tag for Logging
+	public static final String LOG_TAG = "Invaders";
 }
