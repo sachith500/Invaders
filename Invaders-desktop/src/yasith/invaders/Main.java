@@ -18,7 +18,7 @@ public class Main {
 		cfg.width = 640;
 		cfg.height = 480;
 		
-		new LwjglApplication(new Game(), cfg);
+		new LwjglApplication(new InvadersGame(), cfg);
 	}
 	
 	static void packTextures(){

@@ -3,9 +3,11 @@ package yasith.invaders;
 import java.util.*;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Peripheral;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,7 +16,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 /**
  * Starts the invaders game, and handles updating the game loop, and display.
  */
-public class Game implements ApplicationListener {
+public class InvadersGame extends Game{
 	
 	GameState gameState;
 	
@@ -27,6 +29,10 @@ public class Game implements ApplicationListener {
 	
 	@Override
 	public void create() {
+		
+		setScreen(new GameScreen());
+		
+		/*
 		
 		mShip = new Ship();
 		mShip.setPosition( Gdx.graphics.getWidth() * 0.5f, 50.0f);
@@ -56,6 +62,9 @@ public class Game implements ApplicationListener {
 		
 		gameState = GameState.getInstance();
 		gameState.setLives(GameConstants.PLAYER_LIVES);
+		
+		*/
+		
 	}
 
 	@Override
@@ -64,25 +73,7 @@ public class Game implements ApplicationListener {
 
 	@Override
 	public void render() {
-		this.mDelta = Gdx.graphics.getDeltaTime();
-		this.updatePositions();
-	
-		if(mInvaders.size() == 0){
-			// TODO: Add logic for end game
-		}
 		
-		// Clear the screen to black
-		Gdx.gl.glClearColor(0, 0, 0, 0);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		
-		mBatch.begin();
-			mShip.render(mBatch);
-			
-			// Draw the remaining invaders
-			for(Invader invader: mInvaders) invader.render(mBatch);
-			
-			mHud.render(mBatch);
-		mBatch.end();
 	}
 
 	@Override
@@ -97,14 +88,8 @@ public class Game implements ApplicationListener {
 	public void resume() {
 	}
 	
-	/** 
-	 * 	Updates position of the ship
-	 * 	
-	 * 	On Android, uses the accelerometer to detect movement,
-	 * 	on PC uses arrow keys.
-	 */
-	private void updatePositions(){
-			
-		// TODO: Remove during refactoring
+	@Override
+	public void setScreen(Screen screen){
+		super.setScreen(screen);
 	}
 }
