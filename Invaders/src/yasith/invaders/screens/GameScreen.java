@@ -1,6 +1,6 @@
 package yasith.invaders.screens;
 
-import yasith.invaders.Ship;
+import yasith.invaders.actors.Ship;
 import yasith.util.AbstractScreen;
 
 import com.badlogic.gdx.Gdx;

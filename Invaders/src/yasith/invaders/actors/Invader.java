@@ -1,4 +1,7 @@
-package yasith.invaders;
+package yasith.invaders.actors;
+
+import yasith.invaders.GameConstants;
+import yasith.invaders.GameState;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

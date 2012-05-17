@@ -1,7 +1,8 @@
-package yasith.invaders;
+package yasith.invaders.actors;
 
 import java.util.*;
 
+import yasith.invaders.GameState;
 import yasith.util.DynamicActor;
 
 import com.badlogic.gdx.Gdx;
