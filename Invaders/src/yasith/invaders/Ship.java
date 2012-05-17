@@ -74,7 +74,9 @@ public class Ship extends DynamicActor{
 		// TODO: Should go into GameConstants
 		if(mBullets.size() < 2){
 			// Bullet should fire from the middle of the ship
-			mBullets.add(new Bullet(x + mSprite.getWidth() * 0.5f, y, 1));
+			Bullet b = new Bullet(x + mSprite.getWidth() * 0.5f, y, 1);
+			mBullets.add(b);
+			getStage().addActor(b);
 		}
 	}
 	
@@ -102,19 +104,21 @@ public class Ship extends DynamicActor{
 		if(Gdx.input.justTouched()){
 			fire();
 		}
-		
+	
 		// Update the Bullets, and draw them.
 		Iterator<Bullet> it = mBullets.iterator();
 		while(it.hasNext()){
 			Bullet b = it.next();
-			b.move();
-			//TODO: make the bullet an actor too
-			//b.render(batch);
 			
 			// If the bullet is dead remove
 			// Using iterator's remove is the only removal with
 			// specified behavior
-			if(!b.isAlive()) it.remove();
+			if(!b.isAlive()){
+				it.remove();
+				
+				// Remove from the stage
+				getStage().removeActor(b);
+			}
 		}
 		
 	}
