@@ -1,4 +1,4 @@
-package yasith.invaders;
+package yasith.util;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

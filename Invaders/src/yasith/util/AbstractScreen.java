@@ -1,4 +1,6 @@
-package yasith.invaders;
+package yasith.util;
+
+import yasith.invaders.GameState;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

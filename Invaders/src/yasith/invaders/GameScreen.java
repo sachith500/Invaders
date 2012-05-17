@@ -1,5 +1,7 @@
 package yasith.invaders;
 
+import yasith.util.AbstractScreen;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.actions.FadeIn;
 import static yasith.invaders.GameConstants.*;

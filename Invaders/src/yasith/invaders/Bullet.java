@@ -1,5 +1,7 @@
 package yasith.invaders;
 
+import yasith.util.DynamicActor;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

@@ -2,6 +2,8 @@ package yasith.invaders;
 
 import java.util.*;
 
+import yasith.util.DynamicActor;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Peripheral;
