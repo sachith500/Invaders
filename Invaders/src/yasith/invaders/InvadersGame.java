@@ -2,6 +2,8 @@ package yasith.invaders;
 
 import java.util.*;
 
+import yasith.invaders.screens.GameScreen;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
