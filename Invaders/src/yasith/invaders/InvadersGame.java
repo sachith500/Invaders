@@ -13,6 +13,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+import static yasith.invaders.GameConstants.*;
+
 /**
  * Starts the invaders game, and handles updating the game loop, and display.
  */
@@ -73,7 +75,7 @@ public class InvadersGame extends Game{
 
 	@Override
 	public void render() {
-		
+		super.render();
 	}
 
 	@Override
@@ -91,5 +93,8 @@ public class InvadersGame extends Game{
 	@Override
 	public void setScreen(Screen screen){
 		super.setScreen(screen);
+		
+		Gdx.app.log(LOG_TAG,
+				"Setting Screen: " + screen.getClass().getSimpleName());
 	}
 }

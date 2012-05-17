@@ -21,6 +21,7 @@ public class Ship extends DynamicActor{
 		super(GameState.getInstance().atlas.createSprite("ship0"));
 		
 		mBullets = new ArrayList<Bullet>();
+		mVelocity = 200.0f;
 	}
 
 	/**
@@ -29,8 +30,6 @@ public class Ship extends DynamicActor{
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha){
 		super.draw(batch, parentAlpha);
-	
-		
 	}
 
 	/**
@@ -44,8 +43,8 @@ public class Ship extends DynamicActor{
 	/**
 	 * Moves the ship by x * velocity. No need to change y coord.
 	 */
-	public void move(float x){
-		x += x * mVelocity;
+	public void move(float dx){
+		x += dx * mVelocity;
 	
 		float maxX = Gdx.graphics.getWidth() - mSprite.getWidth();
 		x = x > maxX ? maxX : x; // Stop at the right edge

@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
+import static yasith.invaders.GameConstants.*;
+
 public abstract class AbstractScreen implements Screen{
 
 	public static final int GAME_WIDTH = 800;
