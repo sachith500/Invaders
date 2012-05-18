@@ -2,6 +2,7 @@ package yasith.invaders.actors;
 
 import yasith.invaders.GameConstants;
 import yasith.invaders.GameState;
+import yasith.util.DynamicActor;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,50 +11,39 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 /**
  * Represents an invader
  */
-public class Invader {
+public class Invader extends DynamicActor{
 
-	private float mX;
-	private float mY;
-	private float mVelocity = GameConstants.INVADER_VELOCITY;
-	
-	private Sprite mSprite = null;
-	
-	GameState gameState;
 
 	/**
-	 * Creates new instance of an invader
+	 * Creates new instance of an invader,
+	 * Use createInvader factory method to get the Actor
 	 */
-	public Invader(float x, float y, int row) {
-		
-		setPosition(x, y);
-		
-		gameState = GameState.getInstance();
-		TextureAtlas atlas = gameState.atlas;
-		// TODO: Cache the sprites
-		mSprite = atlas.createSprite(GameConstants.INVADER_SPRITES[row]);
+	private Invader(Sprite sprite) {
+		super(GameState.getInstance().atlas.createSprite("invader"));
 	}
 	
 	/**
-	 * Renders the invader sprite on the given SpriteBatch
+	 * Creates and returns a new instance of an invader
 	 */
-	public void render(SpriteBatch batch) {
-		mSprite.setPosition(mX, mY);
-		mSprite.draw(batch);
+	public static Invader createInvader(float x, float y, int row){
+		Sprite sprite = GameState.getInstance().getInvaderSprite(row);
+		
+		Invader invader = new Invader(sprite);
+		invader.setPosition(x, y);
+		
+		return invader;
 	}
 	
 	/**
 	 * Sets the position of the sprite
 	 */
 	public void setPosition(float x, float y){
-		mX = x;
-		mY = y;
+		this.x = x;
+		this.y = y;
 	}
-	
-	/**
-	 * Moves the invader by x * velocity and y * velocity
-	 */
-	public void move(float x, float y){
-		mX += x * mVelocity;
-		mY += y * mVelocity;
+
+	@Override
+	public void act(float delta) {
+		// TODO Auto-generated method stub
 	}
 }
