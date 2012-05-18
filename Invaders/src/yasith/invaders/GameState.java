@@ -12,7 +12,7 @@ public class GameState {
 	private static GameState sInstance = null;
 	
 	// variables used to store the game state
-	TextureAtlas atlas; // no use of the atlas being private
+	public TextureAtlas atlas; // no use of the atlas being private
 
 	private int lives = 0; // remaining lives
 	
