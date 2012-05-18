@@ -55,6 +55,7 @@ public class GameState {
 	 * Initializes mInvaderSprites when required;
 	 */
 	public Sprite getInvaderSprite(int row) {
+		// If we haven't created the Sprites, create them now
 		if(mInvaderSprites == null){
 			mInvaderSprites = new Sprite[GameConstants.INVADER_ROWS];
 			

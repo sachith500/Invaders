@@ -1252,3 +1252,465 @@ bullet
   orig: 5, 19
   offset: 0, 0
   index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
+
+images1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+invader
+  rotate: false
+  xy: 2, 2
+  size: 49, 40
+  orig: 49, 40
+  offset: 0, 0
+  index: -1
+ship0
+  rotate: false
+  xy: 53, 2
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 94, 2
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 121, 2
+  size: 5, 19
+  orig: 5, 19
+  offset: 0, 0
+  index: -1
