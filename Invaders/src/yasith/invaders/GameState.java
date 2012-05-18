@@ -1,6 +1,7 @@
 package yasith.invaders;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 /**
@@ -12,9 +13,13 @@ public class GameState {
 	private static GameState sInstance = null;
 	
 	// variables used to store the game state
-	TextureAtlas atlas; // no use of the atlas being private
+	public TextureAtlas atlas; // no use of the atlas being private
 
 	private int lives = 0; // remaining lives
+	
+	// Create an store the invader sprites.
+	// Because we are reusing them.
+	private Sprite mInvaderSprites[] = null;
 	
 	// private constructor prevents initialization outside of GameState
 	private GameState() {
@@ -39,9 +44,27 @@ public class GameState {
 	}
 
 	/**
-	 * Set the remaining lives of the player
+	 * Sets the remaining lives of the player
 	 */
 	public void setLives(int lives)	{
 		this.lives = lives;
+	}
+
+	/**
+	 * Returns the sprite of the invader matching to the given row.
+	 * Initializes mInvaderSprites when required;
+	 */
+	public Sprite getInvaderSprite(int row) {
+		// If we haven't created the Sprites, create them now
+		if(mInvaderSprites == null){
+			mInvaderSprites = new Sprite[GameConstants.INVADER_ROWS];
+			
+			for(int i = 0; i < GameConstants.INVADER_ROWS; ++i){
+				mInvaderSprites[i] = 
+						atlas.createSprite(GameConstants.INVADER_SPRITES[row]);
+			}
+		}
+		
+		return mInvaderSprites[row];
 	}
 }
