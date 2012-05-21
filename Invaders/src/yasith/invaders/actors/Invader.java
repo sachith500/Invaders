@@ -55,5 +55,7 @@ public class Invader extends DynamicActor{
 	public void hit() {
 		//TODO: Sound effect or something
 		markToRemove(true);
+		// We don't want the same invader to get hit again
+		GameState.getInstance().removeFromInvaderList(this);
 	}
 }

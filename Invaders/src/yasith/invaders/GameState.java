@@ -91,4 +91,11 @@ public class GameState {
 	public void setInvaderList(ArrayList<Invader> lst){
 		mInvadersList = lst;
 	}
+
+	/**
+	 * Removes the given invader from mInvadersList
+	 */
+	public void removeFromInvaderList(Invader invader) {
+		mInvadersList.remove(invader);
+	}
 }
