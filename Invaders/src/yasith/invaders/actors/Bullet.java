@@ -99,6 +99,7 @@ public class Bullet extends DynamicActor{
 						bulletRect.toString() + " hit " + invRect.toString());
 				inv.hit();
 				hit();
+				break; // We don't want one bullet to kill 2 invaders
 			}
 		}
 	}
