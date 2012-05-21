@@ -17,6 +17,8 @@ public abstract class DynamicActor extends Actor {
 	 */
 	public DynamicActor(Sprite sprite){
 		mSprite = sprite;
+		width = sprite.getWidth();
+		height = sprite.getHeight();
 	}
 	
 	/**

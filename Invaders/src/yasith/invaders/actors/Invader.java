@@ -46,4 +46,14 @@ public class Invader extends DynamicActor{
 	public void act(float delta) {
 		// TODO Auto-generated method stub
 	}
+
+	/**
+	 * Callback function when a bullet is hit.
+	 * Not to be confused with the hit callback function used by Actor
+	 * to get touch events.
+	 */
+	public void hit() {
+		//TODO: Sound effect or something
+		markToRemove(true);
+	}
 }

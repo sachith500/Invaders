@@ -1,8 +1,12 @@
 package yasith.invaders;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+
+import yasith.invaders.actors.Invader;
 
 /**
  * Holds information about the current state of the Game
@@ -20,6 +24,9 @@ public class GameState {
 	// Create an store the invader sprites.
 	// Because we are reusing them.
 	private Sprite mInvaderSprites[] = null;
+
+	// Store the currently active invaders
+	private ArrayList<Invader> mInvadersList = null;
 	
 	// private constructor prevents initialization outside of GameState
 	private GameState() {
@@ -66,5 +73,22 @@ public class GameState {
 		}
 		
 		return mInvaderSprites[row];
+	}
+	
+	/**
+	 * Returns the list of invaders
+	 */
+	public ArrayList<Invader> getInvaderList(){
+		if(mInvadersList == null){
+			mInvadersList = new ArrayList<Invader>();
+		}
+		return mInvadersList;
+	}
+	
+	/**
+	 * Assign the list of invaders
+	 */
+	public void setInvaderList(ArrayList<Invader> lst){
+		mInvadersList = lst;
 	}
 }

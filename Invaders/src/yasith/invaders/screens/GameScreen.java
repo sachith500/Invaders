@@ -2,6 +2,7 @@ package yasith.invaders.screens;
 
 import java.util.ArrayList;
 
+import yasith.invaders.GameState;
 import yasith.invaders.actors.Invader;
 import yasith.invaders.actors.Ship;
 import yasith.util.AbstractScreen;
@@ -23,7 +24,6 @@ public class GameScreen extends AbstractScreen {
 	private Ship mShip;
 	
 	// Array List to store the invaders for easy access
-	private ArrayList<Invader> mInvadersList = null;	
 	// Controls the animation of the invaders
 	private Group mInvadersGroup = null;
 
@@ -39,7 +39,7 @@ public class GameScreen extends AbstractScreen {
 		mInvadersGroup = new Group("invaders");
 		
 		// Add the invaders
-		mInvadersList = new ArrayList<Invader>();
+		ArrayList<Invader> lst = new ArrayList<Invader>();
 		
 		for(int i = 0; i < INVADER_ROWS; ++i){
 			for(int j = 0; j < INVADER_COLS; ++j){
@@ -50,12 +50,15 @@ public class GameScreen extends AbstractScreen {
 								i); // row of the invader
 				
 				// Add the invader to the Array List
-				mInvadersList.add(invader);
+				lst.add(invader);
 				
 				// Add the actor the Group, which will be added to the stage
 				mInvadersGroup.addActor(invader);
 			}
 		}
+		
+		// Set the invader list in GameState
+		GameState.getInstance().setInvaderList(lst);
 	}
 
 	@Override
