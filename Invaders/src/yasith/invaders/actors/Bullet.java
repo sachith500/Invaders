@@ -47,13 +47,6 @@ public class Bullet extends DynamicActor{
 		mVelocity = BULLET_VELOCITY;
 	}
 	
-	/**
-	 * Update the position of the bullet
-	 */
-	public void move(float delta){
-		// TODO: Should deltaTime be in GameState ?
-		}
-
 	/*
 	 * Callback function when the bullet is hit.
 	 */
