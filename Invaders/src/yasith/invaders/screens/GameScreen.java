@@ -47,7 +47,7 @@ public class GameScreen extends AbstractScreen {
 						Invader.createInvader(
 								START_X + (j * OFFSET_X), // x-coord of invader
 								START_Y - (i * OFFSET_Y), // y-coord of invader 
-								i); // row of the invader
+								i, j); // row,column of the invader
 				
 				// Add the invader to the Array List
 				lst.add(invader);

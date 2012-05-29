@@ -7,12 +7,16 @@ import yasith.util.DynamicActor;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector2;
 
 /**
  * Represents an invader
  */
 public class Invader extends DynamicActor{
 
+	// Row and column of this invader on the invaders grid
+	private int mRow;
+	private int mCol;
 
 	/**
 	 * Creates new instance of an invader,
@@ -25,11 +29,14 @@ public class Invader extends DynamicActor{
 	/**
 	 * Creates and returns a new instance of an invader
 	 */
-	public static Invader createInvader(float x, float y, int row){
+	public static Invader createInvader(float x, float y, 
+			int row, int col){
 		Sprite sprite = GameState.getInstance().getInvaderSprite(row);
 		
 		Invader invader = new Invader(sprite);
 		invader.setPosition(x, y);
+		invader.mRow = row;
+		invader.mCol = col;
 		
 		return invader;
 	}
@@ -57,5 +64,19 @@ public class Invader extends DynamicActor{
 		markToRemove(true);
 		// We don't want the same invader to get hit again
 		GameState.getInstance().removeFromInvaderList(this);
+	}
+
+	/**
+	 * Returns the row of the invader
+	 */
+	public int getRow(){
+		return mRow;
+	}
+	
+	/**
+	 * Returns the column of the invader
+	 */
+	public int getCol(){
+		return mCol;
 	}
 }
