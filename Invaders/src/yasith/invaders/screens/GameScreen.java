@@ -10,11 +10,13 @@ import yasith.invaders.actors.Ship;
 import yasith.util.AbstractScreen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.FadeIn;
 import com.badlogic.gdx.scenes.scene2d.actions.Forever;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveBy;
 import com.badlogic.gdx.scenes.scene2d.actions.Sequence;
+import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 
 import static yasith.invaders.GameConstants.*;
 
@@ -25,9 +27,10 @@ public class GameScreen extends AbstractScreen {
 	
 	private Ship mShip;
 	
-	// Array List to store the invaders for easy access
 	// Controls the animation of the invaders
 	private Group mInvadersGroup = null;
+	
+	// Holds the bullets fired by the invaders
 	private ArrayList<Bullet> mInvaderBullets = null;
 
 	/**
@@ -112,10 +115,25 @@ public class GameScreen extends AbstractScreen {
 			}
 		}
 		
+		
 		// Add more Bullets if required
-		while(mInvaderBullets.size() < INVADER_BULLET_CAP){
-			// TODO need a way to grab a random invader
-			// ie. add them onto a big list, before adding to stage
+		
+		int n = GameState.getInstance().getInvaderList().size();
+		
+		while(mInvaderBullets.size() < Math.min(n, INVADER_BULLET_CAP)){
+			// TODO try catch
+			// select a random invader
+			int index = (int) (Math.random() * n);
+			Invader invader = GameState.getInstance().getInvaderList().get(index); 
+			
+			// Get the coordinates of the invaders relative to the screen
+			Vector2 coords = new Vector2();
+			Widget.toScreenCoordinates(invader, coords);
+			
+			// Create a new bullet, add it to the list
+			Bullet b = new Bullet(coords.x, coords.y, -1);
+			mInvaderBullets.add(b);
+			mStage.addActor(b);
 		}
 	}
 }
