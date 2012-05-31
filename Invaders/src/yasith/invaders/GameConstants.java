@@ -16,6 +16,9 @@ public class GameConstants {
 	// Speed of the invaders
 	public static final float INVADER_VELOCITY = 50.0f;
 	
+	// Maximum number of bullets invaders can fire at once
+	public static final int INVADER_BULLET_CAP = 3;
+	
 	// Sprites used for each level of invaders
 	// Should have INVADER_ROWS entries
 	public static final String INVADER_SPRITES[] = 

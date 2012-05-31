@@ -1,8 +1,10 @@
 package yasith.invaders.screens;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import yasith.invaders.GameState;
+import yasith.invaders.actors.Bullet;
 import yasith.invaders.actors.Invader;
 import yasith.invaders.actors.Ship;
 import yasith.util.AbstractScreen;
@@ -26,6 +28,7 @@ public class GameScreen extends AbstractScreen {
 	// Array List to store the invaders for easy access
 	// Controls the animation of the invaders
 	private Group mInvadersGroup = null;
+	private ArrayList<Bullet> mInvaderBullets = null;
 
 	/**
 	 * Creates a new GameScreen Instance
@@ -59,6 +62,8 @@ public class GameScreen extends AbstractScreen {
 		
 		// Set the invader list in GameState
 		GameState.getInstance().setInvaderList(lst);
+		
+		mInvaderBullets = new ArrayList<Bullet>();
 	}
 
 	@Override
@@ -89,5 +94,28 @@ public class GameScreen extends AbstractScreen {
 		// Then add a fade-in effect
 		mStage.getRoot().color.a = 0f;
 		mStage.getRoot().action(FadeIn.$(0.5f));
+	}
+
+	@Override
+	public void render(float delta){
+		super.render(delta);
+		
+		// Update the state of invader bullets
+		Iterator<Bullet> it = mInvaderBullets.iterator();
+		while(it.hasNext()){
+			Bullet b = it.next();
+			
+			// Clean-up
+			if(! b.isAlive()){
+				it.remove();
+				mStage.removeActor(b);
+			}
+		}
+		
+		// Add more Bullets if required
+		while(mInvaderBullets.size() < INVADER_BULLET_CAP){
+			// TODO need a way to grab a random invader
+			// ie. add them onto a big list, before adding to stage
+		}
 	}
 }
