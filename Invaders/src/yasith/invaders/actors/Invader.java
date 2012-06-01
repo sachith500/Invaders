@@ -2,12 +2,15 @@ package yasith.invaders.actors;
 
 import yasith.invaders.GameConstants;
 import yasith.invaders.GameState;
+import yasith.invaders.ScoreBoard;
 import yasith.util.DynamicActor;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
+
+import static yasith.invaders.GameConstants.*;
 
 /**
  * Represents an invader
@@ -62,8 +65,12 @@ public class Invader extends DynamicActor{
 	public void hit() {
 		//TODO: Sound effect or something
 		markToRemove(true);
+		
 		// We don't want the same invader to get hit again
 		GameState.getInstance().removeFromInvaderList(this);
+		
+		// Give the player points for destroying the invader
+		ScoreBoard.getInstance().addPoints(INVADER_SCORES[mRow]);
 	}
 
 	/**

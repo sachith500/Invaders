@@ -24,6 +24,9 @@ public class GameConstants {
 	public static final String INVADER_SPRITES[] = 
 			new String[]{"invader", "invader", "invader", "invader"};
 	
+	// Scores for destroying invaders at different rows
+	public static final int INVADER_SCORES[] = new int[]{10, 20, 30, 40, 50};
+	
 	// Number of lives the player begins with
 	public static final int PLAYER_LIVES = 3;
 	

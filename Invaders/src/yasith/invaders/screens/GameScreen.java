@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import yasith.invaders.GameState;
+import yasith.invaders.ScoreBoard;
 import yasith.invaders.actors.Bullet;
 import yasith.invaders.actors.Invader;
 import yasith.invaders.actors.Ship;
@@ -97,6 +98,9 @@ public class GameScreen extends AbstractScreen {
 		// Then add a fade-in effect
 		mStage.getRoot().color.a = 0f;
 		mStage.getRoot().action(FadeIn.$(0.5f));
+		
+		// Reset the score, before starting the game
+		ScoreBoard.getInstance().reset();
 	}
 
 	@Override
@@ -114,7 +118,6 @@ public class GameScreen extends AbstractScreen {
 				mStage.removeActor(b);
 			}
 		}
-		
 		
 		// Add more Bullets if required
 		

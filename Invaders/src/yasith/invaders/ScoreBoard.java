@@ -21,7 +21,7 @@ public class ScoreBoard {
 	}
 	
 	/**
-	 * Returns the Scoreboard instance
+	 * Returns the ScoreBoard instance
 	 */
 	public static synchronized ScoreBoard getInstance() {
 		if(sInstance == null){
