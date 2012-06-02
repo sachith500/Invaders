@@ -33,6 +33,10 @@ public class GameScreen extends AbstractScreen {
 	
 	// Holds the bullets fired by the invaders
 	private ArrayList<Bullet> mInvaderBullets = null;
+	
+	// Heads-Up-Display
+	// Displays Health, Score and Level
+	private Hud mHud;
 
 	/**
 	 * Creates a new GameScreen Instance
@@ -68,6 +72,9 @@ public class GameScreen extends AbstractScreen {
 		GameState.getInstance().setInvaderList(lst);
 		
 		mInvaderBullets = new ArrayList<Bullet>();
+		
+		mHud = new Hud();
+		GameState.getInstance().setLives(PLAYER_LIVES);
 	}
 
 	@Override
@@ -85,6 +92,9 @@ public class GameScreen extends AbstractScreen {
 		mInvadersGroup.x = 0.0f;
 		mInvadersGroup.y = 375.0f;
 		mStage.addActor(mInvadersGroup);
+		
+		// Add the Heads-Up-Display
+		mStage.addActor(mHud);
 		
 		// Animate the invaders as coming down
 		mInvadersGroup.action(Forever.$(Sequence.$(

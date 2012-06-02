@@ -1,15 +1,18 @@
 package yasith.invaders.screens;
 
+import java.util.ArrayList;
+
 import yasith.invaders.GameState;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
  * Manages the Heads Up Display
  */
-public class Hud {
+public class Hud extends Actor{
 	
 	private Sprite mHeart = null;
 	
@@ -22,6 +25,7 @@ public class Hud {
 		gameState = GameState.getInstance();
 		
 		mHeart = gameState.atlas.createSprite("heart");
+		
 	}
 
 	/**
@@ -30,7 +34,8 @@ public class Hud {
 	 * - Hearts, to represent lives in the top-left corner
 	 * - More ?
 	 */
-	public void render(SpriteBatch batch){
+	@Override
+	public void draw(SpriteBatch batch, float parentAlpha){
 		
 		// Draw one heart for each life on the top-left corner
 		// spaced with 5px, starts with 5px offset from left
@@ -39,5 +44,11 @@ public class Hud {
 					Gdx.graphics.getHeight() - mHeart.getHeight());
 			mHeart.draw(batch, 0.9f); // draw heart with 90% opacity
 		}	
+	}
+
+	@Override
+	public Actor hit(float x, float y) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
