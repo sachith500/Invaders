@@ -81,51 +81,72 @@ public class Bullet extends DynamicActor{
 		Rectangle bulletRect = 
 				new Rectangle(bulletCoord.x, bulletCoord.y, width, height);
 
-		// Go through each invader and see if the bullet collides
-		// If the bullet is coming from the ship (mDir = 1)
-		if(mDir == 1){
+		// If the bullet is directed at the invaders
+		if(mDir == 1 && isInvaderCollision(bulletRect)) return;
 		
-			ArrayList<Invader> lst = GameState.getInstance().getInvaderList();
-			for(Invader inv: lst){
-				
-				// We need to convert all coords, relative to groups and stage
-				// to screen coordinates
-				Vector2 invCoord = new Vector2();
-				Widget.toScreenCoordinates(inv, invCoord);
-				
-				// Bounding box for the invader
-				Rectangle invRect = new Rectangle
-						(invCoord.x, invCoord.y, inv.width, inv.height);
-				
-				// If the bullet is inside the invader, kill it
-				// then destroy the bullet
-				if(invRect.overlaps(bulletRect)){
-					Gdx.app.log(LOG_TAG, "Bullet hit Invader:" + 
-							bulletRect.toString() + " hit " + invRect.toString());
-					inv.hit();
-					hit();
-					return; // We don't want one bullet to kill 2 invaders
-				}
-			}
-		} else{ // Bullet is directed at the ship
-			
-			// Convert coordinates to screen coordinates
-			Vector2 shipCoord = new Vector2();
-			Ship ship = GameState.getInstance().getShip();
-			Widget.toScreenCoordinates(ship, shipCoord);
-			
-			// Bounding box for the ship
-			Rectangle shipRect = new Rectangle(shipCoord.x, shipCoord.y, 
-					ship.width, ship.height);
-			
-			// Check for collision
-			if(shipRect.overlaps(bulletRect)){
-				Gdx.app.log(LOG_TAG, "Ship got hit!!!");
-				
-				ship.hit();
+		// Bullet is directed at the ship
+		if(mDir == -1 && isShipCollision(bulletRect)) return;
+	}
+	
+	
+	/**
+	 * Check if the bullet collides with the invaders
+	 * 
+	 * @return true if collides, false otherwise	
+	 */
+	private boolean isInvaderCollision(Rectangle bulletRect){
+		// Go through each invader and see if the bullet collides
+		ArrayList<Invader> lst = GameState.getInstance().getInvaderList();
+		for(Invader inv: lst){
+
+			// We need to convert all coords, relative to groups and stage
+			// to screen coordinates
+			Vector2 invCoord = new Vector2();
+			Widget.toScreenCoordinates(inv, invCoord);
+
+			// Bounding box for the invader
+			Rectangle invRect = new Rectangle
+					(invCoord.x, invCoord.y, inv.width, inv.height);
+
+			// If the bullet is inside the invader, kill it
+			// then destroy the bullet
+			if(invRect.overlaps(bulletRect)){
+				Gdx.app.log(LOG_TAG, "Bullet hit Invader:" + 
+						bulletRect.toString() + " hit " + invRect.toString());
+				inv.hit();
 				hit();
-				return;
+				return true; // We don't want one bullet to kill 2 invaders
 			}
 		}
+		
+		return false; // Didn't collide
+	}
+	
+	/**
+	 * Check if the bullet collides with the ship
+	 * 
+	 * @return true if collides, false otherwise
+	 */
+	private boolean isShipCollision(Rectangle bulletRect){
+		
+		// Convert coordinates to screen coordinates
+		Vector2 shipCoord = new Vector2();
+		Ship ship = GameState.getInstance().getShip();
+		Widget.toScreenCoordinates(ship, shipCoord);
+		
+		// Bounding box for the ship
+		Rectangle shipRect = new Rectangle(shipCoord.x, shipCoord.y, 
+				ship.width, ship.height);
+		
+		// Check for collision
+		if(shipRect.overlaps(bulletRect)){
+			Gdx.app.log(LOG_TAG, "Ship got hit!!!");
+			
+			ship.hit();
+			hit();
+			return true; // Collision
+		}
+		
+		return false; // No collision
 	}
 }
