@@ -46,6 +46,7 @@ public class GameScreen extends AbstractScreen {
 		
 		// Add the player's ship to the GameScreen
 		mShip = new Ship();
+		GameState.getInstance().setShip(mShip);
 		
 		mInvadersGroup = new Group("invaders");
 		

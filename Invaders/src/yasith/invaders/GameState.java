@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 import yasith.invaders.actors.Invader;
+import yasith.invaders.actors.Ship;
 
 /**
  * Holds information about the current state of the Game
@@ -15,6 +16,8 @@ public class GameState {
 
 	// Singleton instance
 	private static GameState sInstance = null;
+	
+	private Ship mShip;
 	
 	// variables used to store the game state
 	public TextureAtlas atlas; // no use of the atlas being private
@@ -55,6 +58,20 @@ public class GameState {
 	 */
 	public void setLives(int lives)	{
 		this.lives = lives;
+	}
+
+	/**
+	 * @return the mShip
+	 */
+	public Ship getShip() {
+		return mShip;
+	}
+
+	/**
+	 * @param mShip the mShip to set
+	 */
+	public void setShip(Ship mShip) {
+		this.mShip = mShip;
 	}
 
 	/**

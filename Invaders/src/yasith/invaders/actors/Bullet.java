@@ -68,20 +68,23 @@ public class Bullet extends DynamicActor{
 		// Move the bullet, and update mOnScreen if the bullet
 		// goes off the screen
 		y += mVelocity * (float) mDir * delta;
-		if(y > Gdx.graphics.getHeight() || y < 0) mOnScreen = false;
+		if(y > Gdx.graphics.getHeight() || y < 0){
+			mOnScreen = false;
+			return; // If the bullet's off the screen, it won't collide
+		}
+	
+		// Bounding box for the bullet
+		// We need to convert all coords, relative to groups and stage
+		// to screen coordinates
+		Vector2 bulletCoord = new Vector2();
+		Widget.toScreenCoordinates(this, bulletCoord);
+		Rectangle bulletRect = 
+				new Rectangle(bulletCoord.x, bulletCoord.y, width, height);
+
+		// Go through each invader and see if the bullet collides
+		// If the bullet is coming from the ship (mDir = 1)
+		if(mDir == 1){
 		
-			// Go through each invader and see if the bullet collides
-			// If the bullet is coming from the ship (mDir = 1)
-			if(mDir == 1){
-			
-			// Bounding box for the bullet
-			// We need to convert all coords, relative to groups and stage
-			// to screen coordinates
-			Vector2 bulletCoord = new Vector2();
-			Widget.toScreenCoordinates(this, bulletCoord);
-			Rectangle bulletRect = 
-					new Rectangle(bulletCoord.x, bulletCoord.y, width, height);
-			
 			ArrayList<Invader> lst = GameState.getInstance().getInvaderList();
 			for(Invader inv: lst){
 				
@@ -101,8 +104,27 @@ public class Bullet extends DynamicActor{
 							bulletRect.toString() + " hit " + invRect.toString());
 					inv.hit();
 					hit();
-					break; // We don't want one bullet to kill 2 invaders
+					return; // We don't want one bullet to kill 2 invaders
 				}
+			}
+		} else{ // Bullet is directed at the ship
+			
+			// Convert coordinates to screen coordinates
+			Vector2 shipCoord = new Vector2();
+			Ship ship = GameState.getInstance().getShip();
+			Widget.toScreenCoordinates(ship, shipCoord);
+			
+			// Bounding box for the ship
+			Rectangle shipRect = new Rectangle(shipCoord.x, shipCoord.y, 
+					ship.width, ship.height);
+			
+			// Check for collision
+			if(shipRect.overlaps(bulletRect)){
+				Gdx.app.log(LOG_TAG, "Ship got hit!!!");
+				
+				ship.hit();
+				hit();
+				return;
 			}
 		}
 	}

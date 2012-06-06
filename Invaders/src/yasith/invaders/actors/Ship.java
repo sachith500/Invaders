@@ -106,4 +106,17 @@ public class Ship extends DynamicActor{
 		}
 		
 	}
+
+	/**
+	 * Callback function to handle events when the ship gets hit
+	 * by a bullet
+	 */
+	public void hit() {
+		// TODO: Notify the user 
+		// Do we need an OSD ?
+		
+		// Reduce the lives by one
+		int lives = GameState.getInstance().getLives();
+		GameState.getInstance().setLives(lives - 1);
+	}
 }
