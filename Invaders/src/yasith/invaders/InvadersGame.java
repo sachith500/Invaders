@@ -22,45 +22,16 @@ import static yasith.invaders.GameConstants.*;
  */
 public class InvadersGame extends Game{
 	
-	GameState gameState;
-	
-	//private Hud mHud;
-	//private ArrayList<Invader> mInvaders; // Holds the invaders
+	public InvadersGame(){
+		super();
+	}
 	
 	@Override
 	public void create() {
-		
 		setScreen(new GameScreen());
-	
-		/*
-		// Adding invaders to the list of invaders
-		mInvaders = new ArrayList<Invader>();
 		
-		float startX = GameConstants.START_X;
-		float startY = Gdx.graphics.getHeight() - GameConstants.START_Y;
-		
-		float offsetX = GameConstants.OFFSET_X;
-		float offsetY = GameConstants.OFFSET_Y;
-		
-		for(int i = 0; i < GameConstants.INVADER_ROWS; ++i){
-			for(int j = 0; j < GameConstants.INVADER_COLS; ++j){
-				Invader invader = new Invader(startX + (j * offsetX),
-						startY - (i * offsetY), i/2);
-				
-				mInvaders.add(invader);
-			}
-		}
-		// End of adding invaders
-		
-		mHud = new Hud();
-		mBatch = new SpriteBatch();
-		
-		
-		gameState = GameState.getInstance();
-		gameState.setLives(GameConstants.PLAYER_LIVES);
-		
-		*/
-		
+		// Save the game, so we can use this to change the screen later
+		GameState.getInstance().setGame(this);
 	}
 
 	@Override

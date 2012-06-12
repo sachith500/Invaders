@@ -17,6 +17,8 @@ public class GameState {
 	// Singleton instance
 	private static GameState sInstance = null;
 	
+	private InvadersGame mGame;
+	
 	private Ship mShip;
 	
 	// variables used to store the game state
@@ -58,6 +60,20 @@ public class GameState {
 	 */
 	public void setLives(int lives)	{
 		this.lives = lives;
+	}
+
+	/**
+	 * @return the mGame
+	 */
+	public InvadersGame getGame() {
+		return mGame;
+	}
+
+	/**
+	 * @param mGame the mGame to set
+	 */
+	public void setGame(InvadersGame mGame) {
+		this.mGame = mGame;
 	}
 
 	/**
