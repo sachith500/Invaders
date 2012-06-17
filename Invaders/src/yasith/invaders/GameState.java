@@ -21,7 +21,6 @@ public class GameState {
 	
 	private Ship mShip;
 	
-	// variables used to store the game state
 	public TextureAtlas atlas; // no use of the atlas being private
 
 	private int lives = 0; // remaining lives

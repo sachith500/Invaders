@@ -6,6 +6,7 @@ import java.util.Iterator;
 import yasith.invaders.GameState;
 import yasith.invaders.ScoreBoard;
 import yasith.invaders.actors.Bullet;
+import yasith.invaders.actors.Hud;
 import yasith.invaders.actors.Invader;
 import yasith.invaders.actors.Ship;
 import yasith.util.AbstractScreen;
