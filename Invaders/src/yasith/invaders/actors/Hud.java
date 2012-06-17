@@ -1,4 +1,4 @@
-package yasith.invaders.screens;
+package yasith.invaders.actors;
 
 import java.util.ArrayList;
 
