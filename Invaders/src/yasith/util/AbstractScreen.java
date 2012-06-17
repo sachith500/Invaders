@@ -70,5 +70,4 @@ public abstract class AbstractScreen implements Screen{
 	public void dispose(){
 		if(mBatch != null) mBatch.dispose();
 	}
-	
 }

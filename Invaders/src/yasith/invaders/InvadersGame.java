@@ -3,6 +3,7 @@ package yasith.invaders;
 import java.util.*;
 
 import yasith.invaders.screens.GameScreen;
+import yasith.invaders.screens.SplashScreen;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
@@ -28,7 +29,7 @@ public class InvadersGame extends Game{
 	
 	@Override
 	public void create() {
-		setScreen(new GameScreen());
+		setScreen(new SplashScreen());
 		
 		// Save the game, so we can use this to change the screen later
 		GameState.getInstance().setGame(this);

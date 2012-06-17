@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// Pack the textures
-		packTextures();
+		// packTextures();
 		
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "Invaders";
@@ -24,8 +24,8 @@ public class Main {
 	static void packTextures(){
 		Settings settings = new Settings();
 		settings.padding = 2;
-		settings.maxWidth = 512;
-		settings.maxHeight = 512;
+		settings.maxWidth = 1024;
+		settings.maxHeight = 1024;
 		settings.incremental = true;
 		
 		TexturePacker.process(settings, 
