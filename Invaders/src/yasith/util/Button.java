@@ -1,16 +1,9 @@
 package yasith.util;
 
-import java.util.ArrayList;
-
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Widget;
-
-import static yasith.invaders.GameConstants.*;
 
 public class Button extends Actor {
 	
@@ -36,6 +29,7 @@ public class Button extends Actor {
 		
 		this.width = mNormalSprite.getWidth();
 		this.height = mNormalSprite.getHeight();
+		
 		setPosition(0, 0);
 	}
 	
@@ -46,7 +40,8 @@ public class Button extends Actor {
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		Sprite selectedSprite = mNormalSprite;
-		
+	
+		// TODO: Implement the touched functionality
 		if(mTouched){
 			selectedSprite = mTouchedSprite;
 		}
@@ -60,9 +55,10 @@ public class Button extends Actor {
 	@Override
 	public Actor hit(float x, float y) {
 		
-		Gdx.app.log(LOG_TAG, "X:" + x + " Y: " + y);
-		
-		if(mBounds.contains(x, y)){
+		// x and y are relative to the lower-left corner of sprite
+		// 0,0 = lower-left corner
+		// width, height = top-right corner
+		if(x <= width && y <= height){
 			mListener.onClickListener(mKey);
 		}
 		
@@ -75,17 +71,6 @@ public class Button extends Actor {
 	public void setPosition(float x, float y){
 		this.x = x;
 		this.y = y;
-		
-		setBounds();
 	}
 	
-	/**
-	 * Sets the mBounds rectangle
-	 */
-	private void setBounds(){
-		Vector2 coord = new Vector2();
-		Widget.toScreenCoordinates(this, coord);
-		
-		mBounds = new Rectangle(coord.x, coord.y, width, height);
-	}
 }
