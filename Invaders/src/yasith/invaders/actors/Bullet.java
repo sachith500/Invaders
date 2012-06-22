@@ -1,19 +1,17 @@
 package yasith.invaders.actors;
 
+import static yasith.invaders.GameConstants.BULLET_VELOCITY;
+import static yasith.invaders.GameConstants.LOG_TAG;
+
 import java.util.ArrayList;
 
 import yasith.invaders.GameState;
 import yasith.util.DynamicActor;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
-
-import static yasith.invaders.GameConstants.*;
 
 /**
  * Represents a bullet
