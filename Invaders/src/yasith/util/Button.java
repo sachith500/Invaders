@@ -2,7 +2,6 @@ package yasith.util;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Button extends Actor {
@@ -18,8 +17,6 @@ public class Button extends Actor {
 	
 	// The sprite is being touched
 	private boolean mTouched;
-	
-	private Rectangle mBounds;
 	
 	public Button(Sprite normalSprite, Sprite touchedSprite, ButtonListener listener, String key){
 		mNormalSprite = normalSprite;

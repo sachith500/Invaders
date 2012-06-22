@@ -1,16 +1,11 @@
 package yasith.invaders.actors;
 
-import yasith.invaders.GameConstants;
+import static yasith.invaders.GameConstants.INVADER_SCORES;
 import yasith.invaders.GameState;
 import yasith.invaders.ScoreBoard;
 import yasith.util.DynamicActor;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Vector2;
-
-import static yasith.invaders.GameConstants.*;
 
 /**
  * Represents an invader

@@ -1,5 +1,14 @@
 package yasith.invaders.screens;
 
+import static yasith.invaders.GameConstants.INVADER_BULLET_CAP;
+import static yasith.invaders.GameConstants.INVADER_COLS;
+import static yasith.invaders.GameConstants.INVADER_ROWS;
+import static yasith.invaders.GameConstants.OFFSET_X;
+import static yasith.invaders.GameConstants.OFFSET_Y;
+import static yasith.invaders.GameConstants.PLAYER_LIVES;
+import static yasith.invaders.GameConstants.START_X;
+import static yasith.invaders.GameConstants.START_Y;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -11,7 +20,6 @@ import yasith.invaders.actors.Invader;
 import yasith.invaders.actors.Ship;
 import yasith.util.AbstractScreen;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.FadeIn;
@@ -19,8 +27,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Forever;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveBy;
 import com.badlogic.gdx.scenes.scene2d.actions.Sequence;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
-
-import static yasith.invaders.GameConstants.*;
 
 /**
  * Directs the Game Play

@@ -1,6 +1,8 @@
 package yasith.invaders.screens;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import yasith.invaders.GameState;
+import yasith.util.AbstractScreen;
+
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -10,10 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.FadeIn;
 import com.badlogic.gdx.scenes.scene2d.actions.FadeOut;
 import com.badlogic.gdx.scenes.scene2d.actions.Sequence;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-
-import yasith.invaders.GameState;
-import yasith.util.AbstractScreen;
-import yasith.util.DynamicActor;
 
 /**
  * Displays a splash screen, and starts the game
