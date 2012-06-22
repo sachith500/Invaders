@@ -24,6 +24,34 @@ ship0
   orig: 39, 40
   offset: 0, 0
   index: -1
+buttonPlay
+  rotate: false
+  xy: 804, 44
+  size: 139, 33
+  orig: 139, 33
+  offset: 0, 0
+  index: -1
+buttonScore
+  rotate: false
+  xy: 804, 79
+  size: 139, 33
+  orig: 139, 33
+  offset: 0, 0
+  index: -1
+buttonOptions
+  rotate: false
+  xy: 804, 114
+  size: 139, 33
+  orig: 139, 33
+  offset: 0, 0
+  index: -1
+buttonStore
+  rotate: false
+  xy: 804, 149
+  size: 139, 33
+  orig: 139, 33
+  offset: 0, 0
+  index: -1
 heart
   rotate: false
   xy: 2, 484
