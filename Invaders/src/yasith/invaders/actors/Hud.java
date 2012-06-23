@@ -3,8 +3,10 @@ package yasith.invaders.actors;
 import java.util.ArrayList;
 
 import yasith.invaders.GameState;
+import yasith.invaders.ScoreBoard;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -18,6 +20,8 @@ public class Hud extends Actor{
 	
 	GameState gameState;
 	
+	BitmapFont mFont;
+	
 	/**
 	 * Create a new instance of Hud
 	 */
@@ -26,6 +30,7 @@ public class Hud extends Actor{
 		
 		mHeart = gameState.atlas.createSprite("heart");
 		
+		mFont = new BitmapFont();
 	}
 
 	/**
@@ -44,6 +49,12 @@ public class Hud extends Actor{
 					Gdx.graphics.getHeight() - mHeart.getHeight());
 			mHeart.draw(batch, 0.9f); // draw heart with 90% opacity
 		}	
+		
+		// Draw the score in the top-middle of the screen
+		mFont.draw(batch, 
+				"Score: " + ScoreBoard.getInstance().getScore(),
+				Gdx.graphics.getWidth() * 0.45f, 
+				Gdx.graphics.getHeight() * 0.975f);
 	}
 
 	@Override
