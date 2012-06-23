@@ -55,7 +55,7 @@ public class Button extends Actor {
 		// x and y are relative to the lower-left corner of sprite
 		// 0,0 = lower-left corner
 		// width, height = top-right corner
-		if(x <= width && y <= height){
+		if(x >= 0 && y >= 0 && x <= width && y <= height){
 			mListener.onClickListener(mKey);
 		}
 		
