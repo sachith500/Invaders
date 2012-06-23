@@ -79,6 +79,8 @@ public class Bullet extends DynamicActor{
 		Rectangle bulletRect = 
 				new Rectangle(bulletCoord.x, bulletCoord.y, width, height);
 
+		// TODO: Might want to add some effects or something here
+		
 		// If the bullet is directed at the invaders
 		if(mDir == 1 && isInvaderCollision(bulletRect)) return;
 		

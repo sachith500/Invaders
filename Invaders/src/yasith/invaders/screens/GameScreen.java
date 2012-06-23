@@ -156,5 +156,12 @@ public class GameScreen extends AbstractScreen {
 			mInvaderBullets.add(b);
 			mStage.addActor(b);
 		}
+		
+		GameState state = GameState.getInstance();
+		if(state.getInvaderList().size() == 0){ // Won the game
+			state.getGame().setScreen(new GameOverScreen(true));
+		}else if(state.getLives() == 0){ // Lost the game
+			state.getGame().setScreen(new GameOverScreen(false));
+		}
 	}
 }
