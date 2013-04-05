@@ -24,8 +24,8 @@ public class Button extends Actor {
 		mListener = listener;
 		mKey = key;
 		
-		this.width = mNormalSprite.getWidth();
-		this.height = mNormalSprite.getHeight();
+		this.setWidth(mNormalSprite.getWidth());
+		this.setHeight(mNormalSprite.getHeight());
 		
 		setPosition(0, 0);
 	}
@@ -43,19 +43,18 @@ public class Button extends Actor {
 			selectedSprite = mTouchedSprite;
 		}
 		
-		selectedSprite.setPosition(x, y);
-		selectedSprite.setScale(scaleX, scaleY);
+		selectedSprite.setPosition(getX(), getY());
+		selectedSprite.setScale(getScaleX(), getScaleY());
 		
 		selectedSprite.draw(batch, parentAlpha);
 	}
 
-	@Override
-	public Actor hit(float x, float y) {
+	public Actor hit(float x, float y,boolean touchable) {
 		
 		// x and y are relative to the lower-left corner of sprite
 		// 0,0 = lower-left corner
 		// width, height = top-right corner
-		if(x >= 0 && y >= 0 && x <= width && y <= height){
+		if(x >= 0 && y >= 0 && x <= getWidth() && y <= getHeight()){
 			mListener.onClickListener(mKey);
 		}
 		
@@ -66,8 +65,8 @@ public class Button extends Actor {
 	 * Sets the x, y coordinates of the Button
 	 */
 	public void setPosition(float x, float y){
-		this.x = x;
-		this.y = y;
+		this.setX(x);
+		this.setY(y);
 	}
 	
 }

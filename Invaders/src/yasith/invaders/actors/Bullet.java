@@ -38,8 +38,8 @@ public class Bullet extends DynamicActor{
 		if(dir == -1) mSprite.setScale(1.0f, -1.0f);
 		
 		mDir = dir;
-		this.x = x;
-		this.y = y;
+		this.setX(x);
+		this.setY(y);
 		
 		// Set the bullet's velocity
 		mVelocity = BULLET_VELOCITY;
@@ -65,8 +65,8 @@ public class Bullet extends DynamicActor{
 	public void act(float delta) {
 		// Move the bullet, and update mOnScreen if the bullet
 		// goes off the screen
-		y += mVelocity * (float) mDir * delta;
-		if(y > Gdx.graphics.getHeight() || y < 0){
+		setY(getY() + (mVelocity * (float) mDir * delta));
+		if(getY() > Gdx.graphics.getHeight() || getY() < 0){
 			mOnScreen = false;
 			return; // If the bullet's off the screen, it won't collide
 		}
@@ -74,10 +74,10 @@ public class Bullet extends DynamicActor{
 		// Bounding box for the bullet
 		// We need to convert all coords, relative to groups and stage
 		// to screen coordinates
-		Vector2 bulletCoord = new Vector2();
-		Widget.toScreenCoordinates(this, bulletCoord);
+		Vector2 coords = new Vector2(this.getX(),this.getY());
+		Vector2 screencoords = this.localToStageCoordinates(coords);
 		Rectangle bulletRect = 
-				new Rectangle(bulletCoord.x, bulletCoord.y, width, height);
+				new Rectangle(screencoords.x, screencoords.y, getWidth(), getHeight());
 
 		// TODO: Might want to add some effects or something here
 		
@@ -101,12 +101,12 @@ public class Bullet extends DynamicActor{
 
 			// We need to convert all coords, relative to groups and stage
 			// to screen coordinates
-			Vector2 invCoord = new Vector2();
-			Widget.toScreenCoordinates(inv, invCoord);
+			Vector2 coords = new Vector2(inv.getX(),inv.getY());
+			Vector2 screencoords = this.localToStageCoordinates(coords);
 
 			// Bounding box for the invader
 			Rectangle invRect = new Rectangle
-					(invCoord.x, invCoord.y, inv.width, inv.height);
+					(screencoords.x, screencoords.y, inv.getWidth(), inv.getHeight());
 
 			// If the bullet is inside the invader, kill it
 			// then destroy the bullet
@@ -130,13 +130,14 @@ public class Bullet extends DynamicActor{
 	private boolean isShipCollision(Rectangle bulletRect){
 		
 		// Convert coordinates to screen coordinates
-		Vector2 shipCoord = new Vector2();
 		Ship ship = GameState.getInstance().getShip();
-		Widget.toScreenCoordinates(ship, shipCoord);
+		Vector2 coords = new Vector2(ship.getX(),ship.getY());
+		Vector2 screencoords = this.localToStageCoordinates(coords);
+
 		
 		// Bounding box for the ship
-		Rectangle shipRect = new Rectangle(shipCoord.x, shipCoord.y, 
-				ship.width, ship.height);
+		Rectangle shipRect = new Rectangle(screencoords.x, screencoords.y, 
+				ship.getWidth(), ship.getHeight());
 		
 		// Check for collision
 		if(shipRect.overlaps(bulletRect)){

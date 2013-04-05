@@ -119,10 +119,10 @@ public class GameScreen extends AbstractScreen {
 		right.setAmount(-100.0f, 0);
 		right.setDuration(5.0f);
 		RepeatAction forever = new RepeatAction();
-		forever.setActor(mInvadersGroup);
-		forever.setAction((Actions.sequence(right,down,left,down)));
-		forever.setCount(-1); //-1 is FOREVER
-		forever.act(0);
+		//forever.setActor(mInvadersGroup);
+		//forever.setAction((Actions.sequence(right,down,left,down)));
+		//forever.setCount(-1); //-1 is FOREVER
+		//forever.act(0);
 		// Make the stage transparent
 		// Then add a fade-in effect
 		mStage.getRoot().getColor().a = 0f;

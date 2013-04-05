@@ -27,24 +27,16 @@ public class Ship extends DynamicActor{
 		mBullets = new ArrayList<Bullet>();
 		mVelocity = SHIP_VELOCITY;
 	}
-
-	/**
-	 * Sets the position of the ship
-	 */
-	public void setPosition(float x, float y){
-		this.x = x;
-		this.y = y;
-	}
 	
 	/**
 	 * Moves the ship by x * velocity. No need to change y coord.
 	 */
 	public void move(float dx){
-		x += dx * mVelocity;
+		setX(getX() + (dx * mVelocity));
 	
 		float maxX = Gdx.graphics.getWidth() - mSprite.getWidth();
-		x = x > maxX ? maxX : x; // Stop at the right edge
-		x = x < 0 ? 0 : x; // Stop at the left edge
+		setX(getX() > maxX ? maxX : getX()); // Stop at the right edge
+		setX(getX() < 0 ? 0 : getX()); // Stop at the left edge
 	}
 	
 	/**
@@ -56,7 +48,7 @@ public class Ship extends DynamicActor{
 		// TODO: Should go into GameConstants
 		if(mBullets.size() < BULLET_LIMIT){
 			// Bullet should fire from the middle of the ship
-			Bullet b = new Bullet(x + mSprite.getWidth() * 0.5f, y, 1);
+			Bullet b = new Bullet(getX() + mSprite.getWidth() * 0.5f, getY(), 1);
 			mBullets.add(b);
 			getStage().addActor(b);
 		}
@@ -101,7 +93,7 @@ public class Ship extends DynamicActor{
 				it.remove();
 				
 				// Remove from the stage
-				getStage().removeActor(b);
+				//getStage().removeActor(b);
 			}
 		}
 		

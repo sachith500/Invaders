@@ -42,10 +42,6 @@ public class Invader extends DynamicActor{
 	/**
 	 * Sets the position of the sprite
 	 */
-	public void setPosition(float x, float y){
-		this.x = x;
-		this.y = y;
-	}
 
 	@Override
 	public void act(float delta) {
@@ -59,7 +55,7 @@ public class Invader extends DynamicActor{
 	 */
 	public void hit() {
 		//TODO: Sound effect or something
-		markToRemove(true);
+		//markToRemove(true);
 		
 		// We don't want the same invader to get hit again
 		GameState.getInstance().removeFromInvaderList(this);

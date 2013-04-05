@@ -37,10 +37,10 @@ public class MainScreen extends AbstractScreen implements ButtonListener{
 					this,
 					str);
 			
-			button.setPosition(posX - (button.width * 0.5f), posY);
+			button.setPosition(posX - (button.getWidth() * 0.5f), posY);
 			
 			// Next button comes below this button
-			posY -= button.height + padding;
+			posY -= button.getHeight() + padding;
 			
 			mStage.addActor(button);
 		}
