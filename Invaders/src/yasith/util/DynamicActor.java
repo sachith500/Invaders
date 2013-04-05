@@ -17,8 +17,8 @@ public abstract class DynamicActor extends Actor {
 	 */
 	public DynamicActor(Sprite sprite){
 		mSprite = sprite;
-		width = sprite.getWidth();
-		height = sprite.getHeight();
+		setWidth(sprite.getWidth());
+		setHeight(sprite.getHeight());
 	}
 	
 	/**
@@ -27,14 +27,13 @@ public abstract class DynamicActor extends Actor {
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		// Prepare the sprite before drawing
-		mSprite.setPosition(x, y);
-		mSprite.setScale(scaleX, scaleY);
+		mSprite.setPosition(getX(), getY());
+		mSprite.setScale(getScaleX(), getScaleY());
 		
 		// Draw the sprite
 		mSprite.draw(batch, parentAlpha);
 	}
 
-	@Override
 	public Actor hit(float x, float y) {
 		// We don't need touch detection for our Actors yet
 		return null;
