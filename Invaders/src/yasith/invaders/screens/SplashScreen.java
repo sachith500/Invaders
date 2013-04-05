@@ -3,14 +3,10 @@ package yasith.invaders.screens;
 import yasith.invaders.GameState;
 import yasith.util.AbstractScreen;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.OnActionCompleted;
-import com.badlogic.gdx.scenes.scene2d.actions.Delay;
-import com.badlogic.gdx.scenes.scene2d.actions.FadeIn;
-import com.badlogic.gdx.scenes.scene2d.actions.FadeOut;
-import com.badlogic.gdx.scenes.scene2d.actions.Sequence;
+import com.badlogic.gdx.scenes.scene2d.actions.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
@@ -25,26 +21,30 @@ public class SplashScreen extends AbstractScreen {
 	public void show(){
 		super.show();
 	
-		// Get the splash screen image from the atlas
+		// Get the splash screen image from the atlas via a sprite
 		mAtlas = GameState.getInstance().atlas;
-		AtlasRegion splashRegion = mAtlas.findRegion("splash-screen");
-		
-		mSplashImage = new Image(splashRegion);
+		Sprite sprite = mAtlas.createSprite("splash-screen");
+		mSplashImage = new Image(sprite);
 		
 		// Splash image fades in quickly, stays there, and fades away
-		Sequence actions = 
-				Sequence.$(FadeIn.$(0.25f), Delay.$( FadeOut.$(0.75f), 1.5f));
+		SequenceAction actions = 
+				Actions.sequence(Actions.fadeIn(0.25f), Actions.delay(1.5f, Actions.fadeOut(0.75f)),new Action(){
+					public boolean act( float delta ) {
+						GameState.getInstance().getGame().setScreen(new MainScreen());
+						return true;
+				}
+				});
 		
 		// After the splash screen the game should start
-		actions.setCompletionListener(new OnActionCompleted(){
+		/*actions.setCompletionListener(new OnActionCompleted(){
 			
 			@Override
 			public void completed(Action action) {
 				GameState.getInstance().getGame().setScreen(new MainScreen());
 			}
-		});
+		});*/
 		
-		mSplashImage.action(actions);
+		mSplashImage.addAction(actions);
 		mStage.addActor(mSplashImage);
 	}
 	
