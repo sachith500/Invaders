@@ -22,10 +22,14 @@ import yasith.util.AbstractScreen;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.actions.FadeIn;
-import com.badlogic.gdx.scenes.scene2d.actions.Forever;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveBy;
-import com.badlogic.gdx.scenes.scene2d.actions.Sequence;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveByAction;
+import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
+//import com.badlogic.gdx.scenes.scene2d.actions.FadeIn;
+//import com.badlogic.gdx.scenes.scene2d.actions.Forever;
+//import com.badlogic.gdx.scenes.scene2d.actions.MoveBy;
+//import com.badlogic.gdx.scenes.scene2d.actions.Sequence;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 
 /**
@@ -55,7 +59,7 @@ public class GameScreen extends AbstractScreen {
 		mShip = new Ship();
 		GameState.getInstance().setShip(mShip);
 		
-		mInvadersGroup = new Group("invaders");
+		mInvadersGroup = new Group();
 		
 		// Add the invaders
 		ArrayList<Invader> lst = new ArrayList<Invader>();
@@ -97,25 +101,32 @@ public class GameScreen extends AbstractScreen {
 		
 		// Add the Invaders Group to the stage,
 		// Then animate them
-		mInvadersGroup.x = 0.0f;
-		mInvadersGroup.y = 375.0f;
+		mInvadersGroup.setX(0.0f);
+		mInvadersGroup.setY(375.0f);
 		mStage.addActor(mInvadersGroup);
 		
 		// Add the Heads-Up-Display
 		mStage.addActor(mHud);
 		
 		// Animate the invaders as coming down
-		mInvadersGroup.action(Forever.$(Sequence.$(
-				MoveBy.$(100.0f, 0.0f, 5.0f),
-				MoveBy.$(0.0f, -10.0f, 2.0f),
-				MoveBy.$(-100.0f, 0.0f, 5.0f),
-				MoveBy.$(0.0f, -10.0f, 2.0f)
-				)));
-		
+		MoveByAction right = new MoveByAction();
+		right.setAmount(100.0f, 0);
+		right.setDuration(5.0f);
+		MoveByAction down = new MoveByAction();
+		right.setAmount(0.0f, -10.0f);
+		right.setDuration(2.0f);
+		MoveByAction left = new MoveByAction();
+		right.setAmount(-100.0f, 0);
+		right.setDuration(5.0f);
+		RepeatAction forever = new RepeatAction();
+		forever.setActor(mInvadersGroup);
+		forever.setAction((Actions.sequence(right,down,left,down)));
+		forever.setCount(-1); //-1 is FOREVER
+		forever.act(0);
 		// Make the stage transparent
 		// Then add a fade-in effect
-		mStage.getRoot().color.a = 0f;
-		mStage.getRoot().action(FadeIn.$(0.5f));
+		mStage.getRoot().getColor().a = 0f;
+		mStage.getRoot().addAction(Actions.fadeIn(0.5f));
 		
 		// Reset the score, before starting the game
 		ScoreBoard.getInstance().reset();
@@ -133,7 +144,7 @@ public class GameScreen extends AbstractScreen {
 			// Clean-up
 			if(! b.isAlive()){
 				it.remove();
-				mStage.removeActor(b);
+				//mStage.removeActor(b);
 			}
 		}
 		
@@ -148,11 +159,10 @@ public class GameScreen extends AbstractScreen {
 			Invader invader = GameState.getInstance().getInvaderList().get(index); 
 			
 			// Get the coordinates of the invaders relative to the screen
-			Vector2 coords = new Vector2();
-			Widget.toScreenCoordinates(invader, coords);
-			
+			Vector2 coords = new Vector2(invader.getX(),invader.getY());
+			Vector2 screencoords = invader.localToStageCoordinates(coords);
 			// Create a new bullet, add it to the list
-			Bullet b = new Bullet(coords.x, coords.y, -1);
+			Bullet b = new Bullet(screencoords.x, screencoords.y, -1);
 			mInvaderBullets.add(b);
 			mStage.addActor(b);
 		}
